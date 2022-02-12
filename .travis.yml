@@ -1,6 +1,10 @@
+language: generic
 sudo: required
 services:
   - docker
 
 before_install:
-  - docker build -t jbuchne/docker-react r-f Dockerfile.dev .
+  - docker build -t jbuchner/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jbuchner/docker-react npm run test
